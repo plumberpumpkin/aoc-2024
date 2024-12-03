@@ -5,6 +5,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import plumperpumpkin.puzzles.Day1
+import plumperpumpkin.puzzles.Day2
 
 fun Application.configureRouting() {
     routing {
@@ -22,6 +23,13 @@ fun Application.configureRouting() {
             val input = call.receiveText()
             val day1 = Day1()
             val result = day1.part2(input)
+            call.respondText { result }
+        }
+
+        post("/Day2Part1"){
+            val input = call.receiveText()
+            val day2 = Day2()
+            val result = day2.part1(input)
             call.respondText { result }
         }
     }

@@ -15,7 +15,7 @@ class Day2 {
         return "Day 2 Part 1 : Total count of save reports is $counter"
     }
 
-    private fun prepareInput(input: String) : ArrayList<ArrayList<Int>> {
+    fun prepareInput(input: String) : ArrayList<ArrayList<Int>> {
         val results = ArrayList<ArrayList<Int>>()
         val lines = input.split("\r\n")
         for(line in lines){
@@ -28,16 +28,16 @@ class Day2 {
         }
         return results
     }
-    private fun directionCheck(report: ArrayList<Int>) : Boolean {
+    fun directionCheck(report: ArrayList<Int>) : Boolean {
         var goesUp = false
         var goesDown = false
         var noDirection = false
         val results = ArrayList<Boolean>()
-        for (index in report.indices - 1){
+        for (index in (report.indices - 2)){
             if (report[index] > report[index + 1]) {
-                goesUp = true
-            } else if (report[index] < report[index + 1]){
                 goesDown = true
+            } else if (report[index] < report[index + 1]){
+                goesUp = true
             } else{
                 noDirection = true
             }
@@ -47,9 +47,9 @@ class Day2 {
         }
         return true
     }
-    private fun distanceCheck(report: ArrayList<Int>) : Boolean {
+    fun distanceCheck(report: ArrayList<Int>) : Boolean {
         var result = false
-        for (index in report.indices - 1){
+        for (index in (report.indices - 2)){
             if (abs(report[index] - report[index + 1]) in 1..3) result = true
             if (!result) return false
         }

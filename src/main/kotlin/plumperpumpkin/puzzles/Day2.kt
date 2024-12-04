@@ -32,8 +32,9 @@ class Day2 {
         var goesUp = false
         var goesDown = false
         var noDirection = false
-        val results = ArrayList<Boolean>()
-        for (index in (report.indices - 2)){
+
+        for (index in 0 ..<report.size-1){
+            val results = ArrayList<Boolean>()
             if (report[index] > report[index + 1]) {
                 goesDown = true
             } else if (report[index] < report[index + 1]){
@@ -48,9 +49,10 @@ class Day2 {
         return true
     }
     fun distanceCheck(report: ArrayList<Int>) : Boolean {
-        var result = false
-        for (index in (report.indices - 2)){
-            if (abs(report[index] - report[index + 1]) in 1..3) result = true
+        for (index in 0..<report.size-1){
+            var result = false
+            val distance = abs(report[index] - report[index + 1])
+            if (distance in 1..3) result = true
             if (!result) return false
         }
         return true

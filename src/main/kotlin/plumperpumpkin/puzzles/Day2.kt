@@ -23,7 +23,7 @@ class Day2 {
                 counter += 1
                 continue
             } else{
-                for (i in 0 ..< report.size - 1){
+                for (i in 0 ..< report.size){
                     val reducedReport = ArrayList<Int>(report)
                     reducedReport.removeAt(i)
                     if (directionCheck(reducedReport) && distanceCheck(reducedReport) ) {

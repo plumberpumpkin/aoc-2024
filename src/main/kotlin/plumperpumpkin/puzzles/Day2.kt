@@ -15,6 +15,27 @@ class Day2 {
         return "Day 2 Part 1 : Total count of save reports is $counter"
     }
 
+    fun part2(puzzleInput: String) : String {
+        val reports = prepareInput(puzzleInput)
+        var counter = 0
+        for (report in reports){
+            if (directionCheck(report) && distanceCheck(report)) {
+                counter += 1
+                continue
+            } else{
+                for (i in 0 ..< report.size - 1){
+                    val reducedReport = ArrayList<Int>(report)
+                    reducedReport.removeAt(i)
+                    if (directionCheck(reducedReport) && distanceCheck(reducedReport) ) {
+                        counter += 1
+                        break
+                    }
+                }
+            }
+        }
+        return "Day 2Part 2 : Total count of save reports is $counter"
+    }
+
     fun prepareInput(input: String) : ArrayList<ArrayList<Int>> {
         val results = ArrayList<ArrayList<Int>>()
         val lines = input.split("\r\n")
@@ -57,4 +78,5 @@ class Day2 {
         }
         return true
     }
+
 }

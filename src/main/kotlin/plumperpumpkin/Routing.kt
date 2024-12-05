@@ -32,5 +32,13 @@ fun Application.configureRouting() {
             val result = day2.part1(input)
             call.respondText { result }
         }
+
+        post("/Day2Part2"){
+            val input = call.receiveText()
+            val day2 = Day2()
+            val result = day2.part2(input)
+            call.respondText { result }
+        }
+
     }
 }

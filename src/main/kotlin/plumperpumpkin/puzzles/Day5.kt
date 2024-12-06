@@ -3,11 +3,11 @@ package plumperpumpkin.puzzles
 class Day5 {
 
     fun part1(input: String) : String {
-        var result = 0
 
         val inputParts = input.split("\r\n\r\n") //Zwischen Rules und Updates ist eine Leerzeile
         val rules = prepareRules(inputParts[0])
         val updates = prepareUpdates(inputParts[1])
+        val result = checkOrder(updates, rules)
 
 
 
@@ -34,7 +34,7 @@ class Day5 {
         return updates
     }
 
-    fun checkOrder(updates: ArrayList<ArrayList<Int>>, rules : ArrayList<Pair<Int, Int>>) : Int {
+    fun checkOrder(updates: List<List<Int>>, rules : List<Pair<Int, Int>>) : Int {
         var result = 0
         for (update in updates){
             var orderIsCorrect = true
@@ -45,7 +45,7 @@ class Day5 {
                 }
                 val indexFirst = update.lastIndexOf(rule.first)
                 val indexSecond = update.lastIndexOf(rule.second)
-                if  (indexFirst < indexSecond) {
+                if  (indexFirst > indexSecond) {
                     println("Update $update violated rule $rule")
                     orderIsCorrect = false
                     break
